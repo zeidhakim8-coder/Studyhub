@@ -25,7 +25,8 @@ docker compose -f docker-compose.dev.yml up -d
 npm install
 
 # 3. Configure environment
-cp .env.example .env     # then fill in your own values
+cp .env.example .env     # then fill in JWT_SECRET and ADMIN_PASSWORD
+openssl rand -hex 32     # use the output as JWT_SECRET
 
 # 4. Create the database schema and seed an admin account
 npm run db:migrate
@@ -33,6 +34,18 @@ npm run db:seed
 
 # 5. Run the API
 npm run dev              # http://localhost:5000/health
+```
+
+## Project structure
+
+```
+prisma/        schema, migrations and seed script
+src/
+  app.ts       server entry point
+  config/      database and Redis clients, env validation
+  middleware/  JWT authentication
+  modules/     auth, courses, enrollment, attendance, ads, users, admin
+  utils/       response helpers, promo-code generator
 ```
 
 ## API overview
@@ -52,6 +65,7 @@ npm run dev              # http://localhost:5000/health
 - Paymob payment flow and webhook
 - Bunny video upload and secure playback
 - Background workers for notifications and attendance
+- Rate limiting and per-role authorization middleware
 - Frontend client
 
 ## License

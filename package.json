@@ -4,6 +4,7 @@
     "build": "tsc",
     "start": "node dist/app.js",
     "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy",
     "db:seed": "ts-node prisma/seed.ts",
     "db:studio": "prisma studio",
     "db:reset": "prisma migrate reset"
@@ -17,6 +18,7 @@
     "@fastify/jwt": "^10.1.0",
     "@prisma/client": "^5.22.0",
     "bcryptjs": "^3.0.3",
+    "dotenv": "^16.4.5",
     "fastify": "^5.8.5",
     "ioredis": "^5.11.0",
     "pg": "^8.21.0",
@@ -29,6 +31,11 @@
     "@types/node": "^25.9.1",
     "@types/pg": "^8.20.0",
     "nodemon": "^3.1.14",
-    "ts-node": "^10.9.2"
-  }
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "name": "studyhub-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend REST API for the Study Hub online learning platform"
 }
